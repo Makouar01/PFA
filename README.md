@@ -1,5 +1,5 @@
 # PFA
-# Stage de PFA 2024 (2mois) (Application de Gestion Intégrée)
+# Stage de PFA 2024 (2mois) : Application de Gestion Intégrée .
 -----------------------------------------------------------------------------------------------------------------------------
 # Description :
 L'application de gestion intégrée est une solution complète permettant la gestion centralisée des utilisateurs, des missions, des véhicules, des réparations, des congés et des stages. L'application est destinée aux administrateurs et aux utilisateurs dotés de permissions spécifiques. Elle utilise une authentification basée sur des tokens JWT (JSON Web Token) pour garantir un accès sécurisé et structuré aux différentes fonctionnalités.
