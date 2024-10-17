@@ -1,0 +1,22 @@
+<div class="demande-conge">
+
+  <h1>Demande de Congé</h1>
+  <form (ngSubmit)="onSubmit()">
+    <div>
+      <label for="description">Description:</label>
+      <input type="text" id="description" [(ngModel)]="conge.description" name="description" required />
+    </div>
+    <div>
+      <label for="dateDebut">Date Début:</label>
+      <input type="date" id="dateDebut" [(ngModel)]="conge.dateDebut" name="dateDebut" required />
+    </div>
+    <div>
+      <label for="dateFin">Date Fin:</label>
+      <input type="date" id="dateFin" [(ngModel)]="conge.dateFin" name="dateFin" required />
+    </div>
+    <button type="submit">Demander Congé</button>
+  </form>
+  <button mat-icon-button class="close-button" (click)="onCancel()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>

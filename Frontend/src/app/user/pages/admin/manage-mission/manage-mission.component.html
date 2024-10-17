@@ -1,0 +1,100 @@
+<div class="manage-mission">
+  <h2>Gérer les Missions</h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Titre</th>
+        <th>Date de début</th>
+        <th>Date de fin</th>
+        <th>Utilisateur</th>
+        <th>Véhicule</th>
+        <th>Coût</th>
+
+        <th>État</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let mission of missions">
+        <td>{{ mission.title }}</td>
+        <td>{{ mission.dateDebut | date }}</td>
+        <td>{{ mission.dateFin | date }}</td>
+        <td>{{ mission.user.name }}</td>
+        <td>{{ mission.vehicule.immatriculation }}</td>
+        <td>{{ mission.cout | currency:'MAD':'symbol' }}</td>
+
+        <td>{{ mission.etat ? 'Approuvé' : 'Non approuvé' }}</td>
+
+        <td>
+          <div class="action-buttons">
+            <button class="btn btn-primary" (click)="openEditModal(mission)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button class="btn btn-danger" (click)="openDeleteModal(mission.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Modal d'Édition -->
+  <div *ngIf="showEditModal" class="modal">
+    <div class="modal-content">
+      <span class="close" (click)="closeEditModal()">&times;</span>
+      <h2>Modifier Mission</h2>
+      <form (ngSubmit)="submitEditForm()">
+        <label for="title">Titre:</label>
+        <input id="title" [(ngModel)]="selectedMission.title" name="title" required />
+
+        <div class="form-group">
+          <label for="cout">Coût(MAD):</label>
+          <input id="cout" type="number" class="form-control" [(ngModel)]="selectedMission.cout" name="cout" required>
+        </div>
+
+
+        <label for="dateDebut">Date de début:</label>
+        <input id="dateDebut" type="date" [(ngModel)]="selectedMission.dateDebut" name="dateDebut" required />
+
+        <label for="dateFin">Date de fin:</label>
+        <input id="dateFin" type="date" [(ngModel)]="selectedMission.dateFin" name="dateFin" required />
+
+        <label for="etat">État:</label>
+        <select id="etat" [(ngModel)]="selectedMission.etat" name="etat" required>
+          <option [ngValue]="true">Approuvé</option>
+          <option [ngValue]="false">Non approuvé</option>
+        </select>
+
+        <div class="form-group">
+          <label for="cout">Coût(MAD):</label>
+          <input id="cout" type="number" class="form-control" [(ngModel)]="selectedMission.cout" name="cout" required>
+        </div>
+
+        <label for="user">Utilisateur:</label>
+        <select id="user" [(ngModel)]="selectedMission.user" name="user" required>
+          <option *ngFor="let user of users" [ngValue]="user">{{ user.name }}</option>
+        </select>
+
+        <label for="vehicule">Véhicule:</label>
+        <select id="vehicule" [(ngModel)]="selectedMission.vehicule" name="vehicule" required>
+          <option *ngFor="let vehicule of vehicules" [ngValue]="vehicule">{{ vehicule.immatriculation }}</option>
+        </select>
+
+        <button type="submit" mat-button>Enregistrer les modifications</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal de Confirmation de Suppression -->
+  <div *ngIf="showDeleteModal" class="modal-delete">
+    <div class="modal-content-delete">
+      <span class="close-delete" (click)="closeDeleteModal()">&times;</span>
+      <h2>Confirmer la Suppression</h2>
+      <p>Êtes-vous sûr de vouloir supprimer cette mission ?</p>
+      <button class="confirm" (click)="confirmDelete()">Oui</button>
+      <button class="cancel" (click)="closeDeleteModal()">Non</button>
+    </div>
+  </div>
+</div>

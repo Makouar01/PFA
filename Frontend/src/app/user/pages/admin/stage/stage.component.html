@@ -1,0 +1,96 @@
+<div class="manage-stage">
+    <h1>Gestion des Stages</h1>
+  
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Sujet</th>
+          <th>Nom de Stagaire</th>
+          <th>Encadrent</th>
+          <th>Departement</th>
+          <th>État</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let stage of stages">
+          <td>{{ stage.sujet }}</td>
+          <td>{{ stage.nom }}</td>
+          <td>{{ stage.description }}</td>
+          <td>{{ stage.departement }}</td>
+          <td>{{ stage.etat ? 'Approuvé' : 'En attente' }}</td>
+          <td>
+            <div class="action-buttons">
+              <button class="btn btn-primary" (click)="selectStage(stage)">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button class="btn btn-danger" (click)="confirmDeleteStage(stage.id)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <button class="btn btn-primary" (click)="addStage()">Add Stage</button>
+  
+    <!-- Edit/Add Modal -->
+    <div class="modal" *ngIf="showEditModal">
+      <div class="modal-content">
+        <span class="close" (click)="clearSelection()">&times;</span>
+        <h3>{{ selectedStage?.id ? 'Edit Stage' : 'Add Stage' }}</h3>
+        <form (ngSubmit)="updateStage()">
+          <div class="form-group">
+            <label for="sujet">Sujet:</label>
+            <input id="sujet" class="form-control" [(ngModel)]="selectedStage.sujet" name="sujet" required>
+          </div>
+  
+          <div class="form-group">
+            <label for="nom">Nom de Stagaire:</label>
+            <input id="nom" class="form-control" [(ngModel)]="selectedStage.nom" name="nom" required>
+          </div>
+  
+          <div class="form-group">
+            <label for="description">Encadrent:</label>
+            <input id="description" class="form-control" [(ngModel)]="selectedStage.description" name="encadrent" required>
+          </div>
+
+
+
+  
+          <div class="form-group">
+            <label for="departement">Departement:</label>
+            <select id="departement" class="form-control" [(ngModel)]="selectedStage.departement" name="departement" required>
+              <option value="DAF">DAF</option>
+              <option value="DPH">DPH</option>
+              <option value="DEP">DEP</option>
+              <option value="DGDRE">DGDRE</option>
+            </select>
+          </div>
+  
+          <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" [(ngModel)]="selectedStage.etat" name="etat">
+            <label class="form-check-label" for="etat">Approuvé</label>
+          </div>
+  
+          <button type="submit" class="btn btn-primary">{{ selectedStage?.id ? 'Update' : 'Add' }} Stage</button>
+          <button type="button" class="btn btn-secondary" (click)="clearSelection()">Cancel</button>
+        </form>
+      </div>
+    </div>
+  
+    <!-- Delete Confirmation Modal -->
+    <div class="modal" *ngIf="showDeleteModal">
+      <div class="modal-content modal-content-delete">
+        <span class="close-delete" (click)="clearSelection()">&times;</span>
+        <h3>Confirm Delete</h3>
+        <p>Are you sure you want to delete this stage?</p>
+        <div class="modal-footer">
+          <button class="btn confirm" (click)="deleteStage()">Yes</button>
+          <button class="btn cancel" (click)="clearSelection()">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

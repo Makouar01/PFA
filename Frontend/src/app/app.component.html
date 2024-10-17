@@ -1,0 +1,70 @@
+<div class="page-container">
+  <!-- Toolbar for non-logged-in users -->
+  <mat-toolbar *ngIf="!isUserLoggedIn " [ngClass]="'background-image'">
+    <span class="app-title"><img src="assets/ok.jpg" alt="Logo de l'application" width="40" height="40">
+    </span>
+
+    <span class="spacer"></span>
+    <a mat-button routerLink="/signup">Register</a>
+    <a mat-button routerLink="/" style="background-color: #06b6d4;">Login</a>
+  </mat-toolbar>
+
+  <!-- Toolbar for logged-in users -->
+  <mat-toolbar *ngIf="isUserLoggedIn" style=" background:linear-gradient(to right, #06b6d4, #3b82f6);;;">
+    <span class="app-title"><img src="assets/ok.jpg" alt="Logo de l'application" width="40" height="40">
+    </span>    <span class="spacer"></span>
+    <div class="center-content">
+      <!-- Admin specific buttons -->
+      <button mat-button *ngIf="isAdmin" routerLink="/manage-acces">Gestion des Permissions</button>
+      <button mat-button *ngIf="isAdmin || hasPermission('Users') " routerLink="/admin/manage-user">Gestion des Employés</button>
+      
+      <!-- Conge menu -->
+      <mat-menu #congeMenu="matMenu">
+        <button  mat-menu-item routerLink="/admin/manage-conge" *ngIf="hasPermission('Conge') || isAdmin">Gestion des Congés</button>
+        <button mat-menu-item (click)="openDemandeCongeDialog()">Demande Conge</button>
+
+              
+
+      </mat-menu>
+      <button mat-button  [matMenuTriggerFor]="congeMenu" >Conge</button>
+
+      <!-- Vehicule menu -->
+      <mat-menu #vehiculeMenu="matMenu">
+        <button mat-menu-item routerLink="/admin/manage-vehicule" *ngIf="hasPermission('Vehicules') || isAdmin">Gestion des Véhicule</button>
+        <button mat-menu-item routerLink="/reparation-vehicle" *ngIf="hasPermission('Vehicules') || isAdmin">Reparation véhicule</button>
+
+      </mat-menu>
+      <button mat-button [matMenuTriggerFor]="vehiculeMenu" *ngIf="hasPermission('Vehicules') || isAdmin">Véhicule</button>
+
+      <!-- Mission menu -->
+      <mat-menu #missionMenu="matMenu">
+        <button mat-menu-item (click)="openCreateMissionDialog()" *ngIf="hasPermission('Mission') || isAdmin">Cration Mission</button>
+        <button mat-menu-item routerLink="/admin/manage-mission" *ngIf="hasPermission('Mission') || isAdmin">Gestion des Missions</button>
+        <button mat-menu-item (click)="openDemandeMissionDialog()">Demande Mission</button>
+
+      </mat-menu>
+      <button mat-button [matMenuTriggerFor]="missionMenu" >Mission</button>
+      <button mat-button  routerLink="/stage">Stage</button>
+
+       </div>
+    <span class="spacer"></span>
+
+    <!-- Profile icon with dropdown menu -->
+    <button mat-button [matMenuTriggerFor]="profileMenu">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <mat-menu #profileMenu="matMenu">
+      <button mat-menu-item routerLink="/edit/user">Modifier vos informations</button>
+      <button mat-menu-item (click)="logout()">Logout</button>
+    </mat-menu>
+  </mat-toolbar>
+
+  <!-- Main content area -->
+  <div class="router-container">
+
+    <router-outlet></router-outlet>
+  </div>
+  <app-footer></app-footer>
+
+</div>
+

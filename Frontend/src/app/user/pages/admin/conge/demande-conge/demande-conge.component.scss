@@ -1,0 +1,78 @@
+.demande-conge {
+  padding: 25px;
+  background-color: #ffffff; /* White background for a cleaner look */
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* More prominent shadow */
+  max-width: 650px;
+  margin: 40px auto;
+  position: relative;
+}
+
+.demande-conge h1 {
+  font-size: 30px;
+  text-align: center;
+  color: #007BFF; /* Slightly darker blue */
+  font-family: 'Arial', sans-serif;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+.demande-conge label {
+  color: #17a2b8; /* Cyan color for labels */
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.demande-conge input[type="text"],
+.demande-conge input[type="date"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 18px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+.demande-conge input[type="date"] {
+  background-color: #f0f8ff; /* Alice blue background for date inputs */
+  color: #333; /* Darker text color for readability */
+}
+
+.demande-conge button[type="submit"] {
+  background-color: #007BFF; /* Green color for the submit button */
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.demande-conge button[type="submit"]:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
+.close-button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+.mat-dialog-title {
+  position: relative;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}

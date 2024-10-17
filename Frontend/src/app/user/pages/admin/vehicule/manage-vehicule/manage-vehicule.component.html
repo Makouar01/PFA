@@ -1,0 +1,96 @@
+<div class="manage-user">
+  <h1>Gérer les véhicules</h1>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Marque</th>
+        <th>Model</th>
+        <th>Immatriculation</th>
+        <th>Date d'Achat</th>
+        <th>Disponible</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let vehicule of vehicules">
+        <td>{{ vehicule.name }}</td>
+        <td>{{ vehicule.marque }}</td>
+        <td>{{ vehicule.model }}</td>
+        <td>{{ vehicule.immatriculation }}</td>
+        <td>{{ vehicule.dateAchat | date: 'dd/MM/yyyy' }}</td>
+        <td>{{ vehicule.disponible ? 'Yes' : 'No' }}</td>
+        <td>
+          <div class="action-buttons">
+            <button class="btn btn-primary" (click)="selectVehicule(vehicule)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button class="btn btn-danger" (click)="confirmDeleteVehicule(vehicule.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button class="btn btn-primary" (click)="addVehicule()">Add Vehicule</button>
+
+  <!-- Edit/Add Modal -->
+  <div class="modal" *ngIf="showEditModal">
+    <div class="modal-content">
+      <span class="close" (click)="clearSelection()">&times;</span>
+      <h3>{{ selectedVehicule?.id ? 'Edit Vehicule' : 'Add Vehicule' }}</h3>
+      <form (ngSubmit)="updateVehicule()">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input id="name" class="form-control" [(ngModel)]="selectedVehicule.name" name="name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="marque">Marque:</label>
+          <input id="marque" class="form-control" [(ngModel)]="selectedVehicule.marque" name="marque" required>
+        </div>
+
+        <div class="form-group">
+          <label for="model">Model:</label>
+          <input id="model" class="form-control" [(ngModel)]="selectedVehicule.model" name="model" required>
+        </div>
+
+        <div class="form-group">
+          <label for="immatriculation">Immatriculation:</label>
+          <input id="immatriculation" class="form-control" [(ngModel)]="selectedVehicule.immatriculation" name="immatriculation" required>
+        </div>
+
+        <div class="form-group">
+          <label for="dateAchat">Date d'Achat:</label>
+          <input id="dateAchat" type="date" class="form-control" [(ngModel)]="selectedVehicule.dateAchat" name="dateAchat" required>
+        </div>
+
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" [(ngModel)]="selectedVehicule.disponible" name="disponible">
+          <label class="form-check-label" for="disponible">Disponible</label>
+        </div>
+
+
+
+        <button type="submit" class="btn btn-primary">{{ selectedVehicule?.id ? 'Update' : 'Add' }} Vehicule</button>
+        <button type="button" class="btn btn-secondary" (click)="clearSelection()">Cancel</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  <div class="modal" *ngIf="showDeleteModal">
+    <div class="modal-content modal-content-delete">
+      <span class="close-delete" (click)="clearSelection()">&times;</span>
+      <h3>Confirm Delete</h3>
+      <p>Are you sure you want to delete this vehicule?</p>
+      <div class="modal-footer">
+        <button class="btn confirm" (click)="deleteVehicule()">Yes</button>
+        <button class="btn cancel" (click)="clearSelection()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

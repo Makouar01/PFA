@@ -1,0 +1,95 @@
+/* Style global */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Roboto', sans-serif; /* Police moderne et professionnelle */
+}
+
+/* Style de la conteneur principale */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f7fa; /* Couleur de fond subtile */
+}
+
+/* Style du mat-card */
+mat-card {
+    width: 100%;
+    max-width: 450px; /* Augmentation de la largeur max */
+    padding: 24px; /* Espacement plus important */
+    background: #ffffff; /* Fond blanc */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Ombre plus douce */
+    border-radius: 8px; /* Bordures légèrement arrondies */
+    transition: box-shadow 0.3s ease; /* Transition fluide pour l'ombre */
+}
+
+mat-card:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15); /* Effet d'ombre au survol */
+}
+
+/* Style du titre du mat-card */
+mat-card-title {
+    text-align: center;
+    font-size: 26px; /* Taille du texte augmentée */
+    margin-bottom: 24px;
+    color: #1a73e8; /* Titre en bleu vif */
+    font-weight: 500; /* Poids du texte */
+}
+
+/* Style du formulaire */
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Style des champs du formulaire */
+mat-form-field {
+    width: 100%;
+    margin-bottom: 16px; /* Espacement réduit pour alignement */
+    background-color: transparent;
+}
+
+/* Style du bouton */
+button {
+    width: 100%;
+}
+
+/* Bouton avec mat-raised-button */
+button[mat-raised-button] {
+    background: #1a73e8; /* Bleu principal de Coursera */
+    color: white;
+    border-radius: 4px; /* Angles légèrement arrondis */
+    font-weight: 500; /* Poids du texte */
+    transition: background 0.3s ease; /* Transition douce pour les interactions */
+}
+
+button[mat-raised-button]:hover {
+    background: #135ab8; /* Couleur plus foncée au survol */
+}
+
+/* Style des actions des boutons dans le mat-card */
+mat-card-actions button[mat-button] {
+    background-color: transparent;
+    color: #1a73e8; /* Couleur des boutons d'action */
+    font-weight: 500; /* Poids du texte */
+}
+
+/* Style de la snackbar d'erreur */
+.error-snackbar {
+    background-color: #d32f2f !important; /* Rouge d'erreur */
+}
+
+/* Media queries pour les petits écrans */
+@media screen and (max-width: 500px) {
+    mat-card-title {
+        font-size: 22px; /* Taille du texte ajustée pour petits écrans */
+    }
+
+    mat-form-field {
+        margin-bottom: 12px; /* Espacement ajusté pour petits écrans */
+    }
+}

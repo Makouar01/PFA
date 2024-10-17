@@ -1,0 +1,18 @@
+.access-denied-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; // Assurez-vous que le conteneur prend toute la hauteur de la vue
+    text-align: center;
+  
+    h1 {
+      color: red;
+      margin-bottom: 20px;
+    }
+  
+    p {
+      font-size: 18px;
+    }
+  }
+  

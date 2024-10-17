@@ -1,0 +1,122 @@
+.manage-user {
+  padding: 20px;
+  background-color: #f0f8ff; /* Bleu très clair */
+  border-radius: 10px;
+}
+
+.manage-user h1 {
+  font-size: 28px;
+  text-align: center;
+  color: #1E90FF; /* Bleu */
+  font-family: 'Arial', sans-serif; /* Police moderne */
+  font-weight: bold; /* Texte en gras */
+  margin-bottom: 20px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.table th, .table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.table th {
+  background-color: #1E90FF; /* Bleu vif pour l'entête */
+  color: white;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #e6f7ff; /* Alternance de bleu clair */
+}
+
+.table-striped tbody tr:hover {
+  background-color: #cceeff; /* Bleu clair au survol */
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  border: none;
+  padding: 8px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.btn-primary {
+  background-color: #1E90FF; /* Bleu primaire */
+  color: white;
+}
+
+.btn-danger {
+  background-color: #f44336; /* Rouge pour les actions dangereuses */
+  color: white;
+}
+
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 500px;
+}
+
+.modal-content-delete {
+  background-color: #f2f2f2; /* Couleur neutre pour la confirmation de suppression */
+  border-radius: 10px;
+}
+
+.close, .close-delete {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover, .close:focus, .close-delete:hover, .close-delete:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.confirm {
+  background-color: #1E90FF; /* Bleu pour les actions de confirmation */
+  color: white;
+}
+
+.cancel {
+  background-color: #f44336; /* Rouge pour les actions d'annulation */
+  color: white;
+}

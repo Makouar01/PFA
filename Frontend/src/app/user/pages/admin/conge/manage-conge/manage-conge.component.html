@@ -1,0 +1,86 @@
+<div class="manage-user">
+  <h1>Gérer les Congés</h1>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th>Date de début</th>
+        <th>Date de fin</th>
+        <th>État</th>
+        <th>Utilisateur</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let conge of conges">
+        <td>{{ conge.description }}</td>
+        <td>{{ conge.dateDebut | date }}</td>
+        <td>{{ conge.dateFin | date }}</td>
+        <td>{{ conge.etat ? 'Approuvé' : 'Non approuvé' }}</td>
+        <td>{{ conge.user.name }}</td>
+        <td>
+          <div class="action-buttons">
+            <button class="btn btn-primary" (click)="openEditModal(conge)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button class="btn btn-danger" (click)="openDeleteModal(conge.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Edit Modal -->
+  <div *ngIf="showEditModal" class="modal">
+    <div class="modal-content create-mission">
+      <span class="close" (click)="closeEditModal()">&times;</span>
+      <h2>Editer le Congé</h2>
+      <form (ngSubmit)="submitEditForm()">
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <textarea id="description" [(ngModel)]="selectedConge.description" name="description" required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="dateDebut">Date de début:</label>
+          <input id="dateDebut" type="date" [(ngModel)]="selectedConge.dateDebut" name="dateDebut" required />
+        </div>
+        <div class="form-group">
+          <label for="dateFin">Date de fin:</label>
+          <input id="dateFin" type="date" [(ngModel)]="selectedConge.dateFin" name="dateFin" required />
+        </div>
+        <div class="form-group">
+          <label for="etat">État:</label>
+          <select id="etat" [(ngModel)]="selectedConge.etat" name="etat" required>
+            <option [ngValue]="true">Approuvé</option>
+            <option [ngValue]="false">Non approuvé</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="user">Utilisateur:</label>
+          <select id="user" [(ngModel)]="selectedConge.user" name="user" required>
+            <option *ngFor="let user of users" [ngValue]="user">{{ user.name }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <button type="submit" mat-button>Enregistrer les modifications</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  <div class="modal" *ngIf="showDeleteModal">
+    <div class="modal-content modal-content-delete">
+      <span class="close-delete" (click)="closeDeleteModal()">&times;</span>
+      <h3>Confirmer la suppression</h3>
+      <p>Êtes-vous sûr de vouloir supprimer ce congé?</p>
+      <div class="modal-footer">
+        <button class="btn confirm" (click)="confirmDelete()">Oui</button>
+        <button class="btn cancel" (click)="closeDeleteModal()">Annuler</button>
+      </div>
+    </div>
+  </div>
+</div>

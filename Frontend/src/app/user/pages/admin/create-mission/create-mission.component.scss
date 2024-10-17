@@ -1,0 +1,89 @@
+/* Page background */
+body {
+  background-color: #808080; /* Gray background for the entire page */
+  margin: 0;
+  font-family: 'Arial', sans-serif; /* Font family updated to match */
+}
+
+/* Form container */
+.create-mission {
+  padding: 20px;
+  background-color: #f0f8ff; /* Bleu très clair */
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 50px auto;
+}
+
+/* Form header */
+.create-mission h1 {
+  font-size: 28px;
+  text-align: center;
+  color: #1E90FF; /* Bleu vif pour l'en-tête */
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Labels */
+.create-mission label {
+  color: #17a2b8; /* Bleu sarcelle pour les labels */
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* Inputs and Selects */
+.create-mission input[type="text"],
+.create-mission select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.create-mission input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f0f8ff; /* Alice blue background for date inputs */
+  color: #333; /* Darker text color for better readability */
+}
+
+/* Submit Button */
+.create-mission button[type="submit"] {
+  background-color: #4CAF50; /* Vert pour le bouton de soumission */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  font-size: 16px;
+}
+
+.create-mission button[type="submit"]:hover {
+  background-color: #45a049; /* Vert plus foncé au survol */
+}
+
+/* Style pour le bouton X */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+}
+
+.mat-dialog-title {
+  position: relative;
+}
+
+.mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}

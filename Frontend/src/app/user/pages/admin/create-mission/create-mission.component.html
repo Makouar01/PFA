@@ -1,0 +1,48 @@
+<div class="create-mission">
+  <h1>Create Mission</h1>
+  <form (ngSubmit)="onSubmit()">
+    <div>
+      <label for="title">Title:</label>
+      <input type="text" id="title" [(ngModel)]="mission.title" name="title" required />
+    </div>
+
+    <div>
+      <label for="description">Description:</label>
+      <input type="text" id="description" [(ngModel)]="mission.description" name="description" required/>
+    </div>
+
+    <div>
+      <label for="dateDebut">Date Debut:</label>
+      <input type="date" id="dateDebut" [(ngModel)]="mission.dateDebut" name="dateDebut" required />
+    </div>
+
+    <div>
+      <label for="dateFin">Date Fin:</label>
+      <input type="date" id="dateFin" [(ngModel)]="mission.dateFin" name="dateFin" required />
+    </div>
+
+    <div>
+      <label for="user">User:</label>
+      <select id="user" [(ngModel)]="selectedUserId" name="user" required>
+        <option *ngFor="let user of users" [value]="user.id">{{ user.name }}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="cout">Coût(MAD):</label>
+      <input id="cout" type="number" class="form-control" [(ngModel)]="mission.cout" name="cout" required>
+    </div>
+
+
+    <div>
+      <label for="vehicule">Vehicule:</label>
+      <select id="vehicule" [(ngModel)]="selectedVehiculeId" name="vehicule" required>
+        <option *ngFor="let vehicule of vehicules" [value]="vehicule.id">{{ vehicule.marque }} - {{ vehicule.model }}</option>
+      </select>
+    </div>
+
+    <button type="submit">Create Mission</button>
+  </form>
+  <button mat-icon-button class="close-button" (click)="dialogRef.close()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>

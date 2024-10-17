@@ -1,0 +1,21 @@
+/* styles.css */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Roboto', sans-serif; /* Police moderne et professionnelle */
+  background-color: #f5f7fa; 
+}
+.background-image {
+  background-image: url('assets/word.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+

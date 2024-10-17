@@ -1,0 +1,92 @@
+<div class="manage-reparation-vehicule">
+  <h1>Gestion des Réparations</h1>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Coût</th>
+        <th>État</th>
+        <th>Véhicule</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let reparation of reparations">
+        <td>{{ reparation.name }}</td>
+        <td>{{ reparation.description }}</td>
+        <td>{{ reparation.cout | currency:'MAD':'symbol' }}</td>
+        <td>{{ reparation.etat ? 'Completed' : 'Pending' }}</td>
+        <td>{{ reparation.vehicule?.name }}</td>
+        <td>
+          <div class="action-buttons">
+            <button class="btn btn-primary" (click)="selectReparation(reparation)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button class="btn btn-danger" (click)="confirmDeleteReparation(reparation.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button class="btn btn-primary" (click)="addReparation()">Add Reparation</button>
+
+  <!-- Edit/Add Modal -->
+  <div class="modal" *ngIf="showEditModal">
+    <div class="modal-content">
+      <span class="close" (click)="clearSelection()">&times;</span>
+      <h3>{{ selectedReparation?.id ? 'Edit Reparation' : 'Add Reparation' }}</h3>
+      <form (ngSubmit)="updateReparation()">
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <input id="description" class="form-control" [(ngModel)]="selectedReparation.description" name="description" required>
+        </div>
+
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input id="name" class="form-control" [(ngModel)]="selectedReparation.name" name="name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="cout">Coût(MAD):</label>
+          <input id="cout" type="number" class="form-control" [(ngModel)]="selectedReparation.cout" name="cout" required>
+        </div>
+
+        <div class="form-group">
+          <label for="etat">État:</label>
+          <select id="etat" class="form-control" [(ngModel)]="selectedReparation.etat" name="etat" required>
+            <option [value]="true">Completed</option>
+            <option [value]="false">Pending</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="vehicule">Véhicule:</label>
+          <select id="vehicule" class="form-control" [(ngModel)]="selectedReparation.vehicule" name="vehicule" required>
+            <option *ngFor="let vehicle of vehicles" [ngValue]="vehicle">{{ vehicle.name }}</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">{{ selectedReparation?.id ? 'Update' : 'Add' }} Reparation</button>
+        <button type="button" class="btn btn-secondary" (click)="clearSelection()">Cancel</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  <div class="modal" *ngIf="showDeleteModal">
+    <div class="modal-content modal-content-delete">
+      <span class="close-delete" (click)="clearSelection()">&times;</span>
+      <h3>Confirm Delete</h3>
+      <p>Are you sure you want to delete this reparation?</p>
+      <div class="modal-footer">
+        <button class="btn confirm" (click)="deleteReparation()">Yes</button>
+        <button class="btn cancel" (click)="clearSelection()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

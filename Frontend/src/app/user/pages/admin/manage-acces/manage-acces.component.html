@@ -1,0 +1,35 @@
+<div class="container-fluid manage-acces-container mt-5">
+  <h1>Gestion des Permissions</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Departement</th>
+        <th>Job</th>
+        <th>Permissions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.name }}</td>
+        <td>{{ user.departement }}</td>
+        <td>{{ user.job }}</td>
+        <td>
+          <div class="permissions-container">
+            <div *ngFor="let permission of permissionsList" class="permission-item">
+              <div class="form-check modern-checkbox">
+                <input 
+                  type="checkbox" 
+                  class="form-check-input modern-checkbox-input" 
+                  [checked]="user.permissions.includes(permission)"
+                  (change)="togglePermission(user, permission)"
+                />
+                <label class="form-check-label modern-checkbox-label">{{ permission }}</label>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,85 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-size: cover; /* Couvre toute la page */
+  background-position: center; /* Centre l'image */
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+}
+
+.page-container {
+  min-height: 100vh;
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* Toolbar style */
+mat-toolbar {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre douce */
+  color: #FFFFFF !important; /* Texte blanc */
+  background-color: #0052cc; /* Bleu pour la barre d'outils */
+}
+
+/* Title style */
+.app-title {
+  font-size: 1.5rem;
+  color: #FFFFFF !important; /* Texte blanc */
+  font-weight: 400;
+}
+
+/* Flexbox container */
+.center-content {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.spacer {
+  flex: 1;
+}
+
+/* Toolbar buttons */
+mat-toolbar a, mat-toolbar button {
+  border: none;
+  background-color: #2196F3; /* Bleu clair pour les boutons */
+  color: #FFFFFF !important; /* Texte blanc */
+  text-transform: none;
+  font-weight: 500;
+  margin: 0 8px;
+  padding: 8px 16px;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 20px; /* Coins arrondis */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; /* Ajout d'une transition douce */
+}
+
+/* Button hover effect */
+mat-toolbar a:hover, mat-toolbar button:hover {
+  background-color: #1976D2; /* Bleu plus foncé au survol */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée au survol */
+  transform: translateY(-2px); /* Léger déplacement vers le haut au survol */
+}
+
+/* Button active state */
+mat-toolbar a:active, mat-toolbar button:active {
+  background-color: #1565C0; /* Bleu encore plus foncé lors du clic */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre réduite lors du clic */
+  transform: translateY(0); /* Retour à la position initiale lors du clic */
+}
+
+/* Menu item hover effect */
+mat-menu-item:hover {
+  background-color: #e0e0e0; /* Gris clair au survol */
+}
+
+/* Profile icon */
+mat-icon {
+  font-size: 24px;
+  color: #0052cc !important; /* Icône bleu */
+}

@@ -1,0 +1,145 @@
+.manage-acces-container {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f0f8ff; /* Fond bleu très clair */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  margin-top: 20px;
+}
+
+.manage-acces-container h1 {
+  font-size: 28px;
+  text-align: center;
+  color: #1E90FF; /* Bleu */
+  font-family: 'Arial', sans-serif; /* Police moderne */
+  font-weight: bold; /* Texte en gras */
+  margin-bottom: 20px;
+}
+
+.permissions-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px; /* Espace entre les éléments */
+}
+
+.permission-item {
+  display: flex;
+  align-items: center;
+}
+
+/* Modern checkboxes style */
+.modern-checkbox {
+  display: flex;
+  align-items: center;
+}
+
+.modern-checkbox-input {
+  width: 18px;
+  height: 18px;
+  appearance: none;
+  background-color: #f0f8ff; /* Bleu très clair */
+  border: 2px solid #1E90FF; /* Bleu pour la bordure */
+  border-radius: 4px; /* Bords légèrement arrondis */
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  position: relative;
+}
+
+.modern-checkbox-input:checked {
+  background-color: #1E90FF; /* Bleu foncé quand cochée */
+}
+
+.modern-checkbox-input:checked::before {
+  content: '✓';
+  color: white;
+  font-size: 14px;
+  position: absolute;
+  top: -2px;
+  left: 3px;
+}
+
+.modern-checkbox-label {
+  margin-left: 8px;
+  color: #1E90FF; /* Texte bleu */
+  font-weight: 500;
+}
+
+/* Table styling */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table thead {
+  background-color: #004d99; /* Fond bleu foncé pour les en-têtes */
+  color: white;
+}
+
+.table th {
+  background-color: #1E90FF; /* Bleu pour les en-têtes */
+  padding: 12px;
+  text-align: left;
+}
+
+.table tbody tr:nth-child(odd) {
+  background-color: #ffffff; /* Fond blanc pour les lignes impaires */
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #f0f8ff; /* Fond bleu clair pour les lignes paires */
+}
+
+.table td {
+  padding: 12px;
+}
+
+/* Modern submit button */
+button[type="submit"] {
+  background-color: #007bff; /* Bleu pour le bouton de soumission */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 20px;
+  font-size: 16px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3; /* Bleu plus sombre au survol */
+}
+
+/* Modal close button */
+.close {
+  font-size: 24px;
+  color: #004d99; /* Bleu foncé */
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+.close:hover {
+  color: #002a80; /* Bleu foncé plus sombre au survol */
+}
+/* Modern checkboxes style */
+.modern-checkbox {
+  display: flex;
+  align-items: center;
+}
+
+
+.modern-checkbox-input:checked {
+  background-color: #4CAF50; /* Vert foncé quand cochée */
+}
+
+.modern-checkbox-input:checked::before {
+  content: '✓';
+  color: white;
+  font-size: 14px;
+  position: absolute;
+  top: -2px;
+  left: 3px;
+}
+
+
+

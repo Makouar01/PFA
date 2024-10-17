@@ -1,0 +1,98 @@
+<div class="manage-user">
+  <h1>Gestion des Utilisateurs</h1>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Email</th>
+        <th>Departement</th>
+        <th>Job</th>
+        <th>En Congé</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.departement }}</td>
+        <td>{{ user.job }}</td>
+        <td>{{ user.enConge ? 'Yes' : 'No' }}</td>
+        <td>
+          <div class="action-buttons">
+            <button class="btn btn-primary" (click)="selectUser(user)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button class="btn btn-danger" (click)="confirmDeleteUser(user.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button class="btn btn-primary" (click)="addUser()">Add User</button>
+
+  <!-- Edit/Add Modal -->
+  <div class="modal" *ngIf="showEditModal">
+    <div class="modal-content">
+      <span class="close" (click)="clearSelection()">&times;</span>
+      <h3>{{ selectedUser?.id ? 'Edit User' : 'Add User' }}</h3>
+      <form (ngSubmit)="updateUser()">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input id="name" class="form-control" [(ngModel)]="selectedUser.name" name="name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input id="email" class="form-control" [(ngModel)]="selectedUser.email" name="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="job">Job:</label>
+          <input id="job" class="form-control" [(ngModel)]="selectedUser.job" name="job" required>
+        </div>
+<!---
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input id="password" type="password" class="form-control" [(ngModel)]="selectedUser.password" name="password" [required]="!selectedUser?.id">
+        </div>
+        -->
+
+        <div class="form-group">
+          <label for="departement">Departement:</label>
+          <select id="departement" class="form-control" [(ngModel)]="selectedUser.departement" name="departement" required>
+            <option value="DAF">DAF</option>
+            <option value="DPH">DPH</option>
+            <option value="DEP">DEP</option>
+            <option value="DGDRE">DGDRE</option>
+          </select>
+        </div>
+
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" [(ngModel)]="selectedUser.enConge" name="enConge">
+          <label class="form-check-label" for="enConge">En Congé</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary">{{ selectedUser?.id ? 'Update' : 'Add' }} User</button>
+        <button  type="submit" class="btn btn-primary" (click)="clearSelection()">Cancel</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  <div class="modal" *ngIf="showDeleteModal">
+    <div class="modal-content modal-content-delete">
+      <span class="close-delete" (click)="clearSelection()">&times;</span>
+      <h3>Confirm Delete</h3>
+      <p>Are you sure you want to delete this user?</p>
+      <div class="modal-footer">
+        <button class="btn confirm" (click)="deleteUser()">Yes</button>
+        <button class="btn cancel" (click)="clearSelection()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
