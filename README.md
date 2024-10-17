@@ -1,5 +1,5 @@
 # PFA
-Stage de PFA 4 éme année (2mois)
+Stage de PFA 2024 (2mois)
 
 
 # Application de Gestion Intégrée
