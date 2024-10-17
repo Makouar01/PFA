@@ -65,11 +65,11 @@ Gestion des stages : Les administrateurs peuvent approuver ou refuser les demand
 
 # Technologies utilisées
 
-*Backend : Spring Boot
-*Sécurité : JWT (JSON Web Token) pour l'authentification
-*Frontend : Angular (ou autre framework utilisé)
-*Base de données : MySQL / PostgreSQL
-*API REST : Utilisation d'API REST pour la communication entre le frontend et le backend
+* Backend : Spring Boot
+* Sécurité : JWT (JSON Web Token) pour l'authentification
+* Frontend : Angular (ou autre framework utilisé)
+* Base de données : MySQL / PostgreSQL
+* API REST : Utilisation d'API REST pour la communication entre le frontend et le backend
 
 
 
